@@ -1,0 +1,41 @@
+.navbar {
+  width: 100%;
+  height: auto;
+  padding: 0.9rem 0;
+  box-shadow: 0px 2px 8px 0px #d0c5c5;
+  position: sticky !important;
+  top: 0;
+  background-color: #fff;
+}
+.nav_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav_left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav_left a {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  padding: 0.4rem 1rem;
+  margin-right: 0.6rem;
+}
+.nav_inner .logo a {
+  font-size: 1.7rem;
+  color: crimson;
+  font-weight: 400;
+  font-family: "Pacifico", cursive;
+  margin-right: 1.7rem;
+}
+.nav_right {
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.register_btn .MuiButton-label {
+  color: #fff !important;
+}
