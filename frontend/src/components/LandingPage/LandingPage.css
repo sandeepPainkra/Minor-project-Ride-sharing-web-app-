@@ -1,0 +1,33 @@
+.landingpage {
+  width: 100%;
+  height: auto;
+}
+.landingpage .banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: red; */
+}
+
+.landingpage .banner_text {
+  width: 50%;
+}
+
+.landingpage .banner_text h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #222843;
+  margin-bottom: 1rem;
+}
+
+.landingpage .banner_text p {
+  font-size: 1.2rem;
+  color: #222843;
+}
+.banner .banner_right {
+  width: 50%;
+  height: auto;
+}
+.banner .banner_right img {
+  width: 100%;
+}

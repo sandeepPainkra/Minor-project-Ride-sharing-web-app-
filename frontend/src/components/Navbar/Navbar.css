@@ -1,11 +1,11 @@
 .navbar {
   width: 100%;
   height: auto;
-  padding: 0.9rem 0;
+  padding: 0.4rem 0;
   box-shadow: 0px 2px 8px 0px #d0c5c5;
   position: sticky !important;
   top: 0;
-  background-color: #fff;
+  background-color: #222843;
 }
 .nav_inner {
   display: flex;
@@ -22,6 +22,7 @@
   text-transform: capitalize;
   padding: 0.4rem 1rem;
   margin-right: 0.6rem;
+  color: #fff;
 }
 .nav_inner .logo a {
   font-size: 1.7rem;
