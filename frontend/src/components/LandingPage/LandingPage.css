@@ -35,7 +35,7 @@
 /* Search Ride section */
 
 .search_for_ride {
-  height: 300px;
+  height: 320px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -56,7 +56,7 @@
   content: "";
   position: absolute;
   width: 100%;
-  height: 300px;
+  height: 320px;
   background: linear-gradient(
     90deg,
     #000 0%,
@@ -104,4 +104,90 @@
 }
 .search_box button .MuiSvgIcon-root {
   color: #fff !important;
+}
+.search_for_ride .search_box button:hover {
+  letter-spacing: 1px;
+  background-color: #222843 !important;
+}
+
+/* Offer Ride section starts here */
+
+.offer_ride {
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.offer_ride_text {
+  padding-left: 3rem;
+}
+
+.offer_ride h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #222843;
+}
+
+.offer_ride p {
+  font-size: 1rem;
+  color: gray;
+  margin-top: 0.5rem;
+  margin-bottom: 1.7rem;
+}
+.offer_ride button {
+  width: 9.3rem;
+  background-color: #222843;
+  height: 3rem;
+  color: #fff;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.offer_ride button:hover {
+  background-color: #1a483c;
+}
+
+/* Carpooling save section starts */
+.c_save {
+  background-color: #edf8ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.c_save_text {
+  padding: 1rem 1.6rem;
+}
+.c_save_text h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #222843;
+  margin-bottom: 0.6rem;
+}
+.c_save_text p {
+  color: gray;
+}
+.c_save_text p i {
+  /* font-weight: bold; */
+  font-family: "Pacifico", cursive;
+  color: #d43a3a;
+}
+.owners,
+.riders {
+  width: 100%;
+  display: flex;
+  margin-top: 2rem;
+}
+.owners h3,
+.riders h3 {
+  color: #222843;
+}
+.owners .MuiSvgIcon-root,
+.riders .MuiSvgIcon-root {
+  color: rgb(171, 17, 17);
+  margin-right: 1rem;
+}
+
+.c_save img {
+  width: 50%;
+  order: 2;
 }

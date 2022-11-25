@@ -6,6 +6,7 @@
   position: sticky !important;
   top: 0;
   background-color: #222843;
+  z-index: 1000;
 }
 .nav_inner {
   display: flex;
@@ -39,4 +40,9 @@
 }
 .register_btn .MuiButton-label {
   color: #fff !important;
+}
+.active_nav {
+  border-radius: 1.9rem;
+  border-right: 3px solid rgb(5, 111, 138);
+  border-left: 3px solid rgb(5, 111, 138);
 }

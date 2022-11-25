@@ -4,6 +4,10 @@ import bannerImg from "../../assets/car-vector.png";
 import video from "../../assets/Banner-video.mp4";
 import { Button } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import driverImage from "../../assets/driver.svg";
+import c_save from "../../assets/carpooling.jpg";
+import PeopleIcon from "@material-ui/icons/People";
+import MotorcycleIcon from "@material-ui/icons/Motorcycle";
 
 const LandingPage = () => {
   return (
@@ -12,7 +16,7 @@ const LandingPage = () => {
 
       <div className="container banner">
         <div className="banner_text">
-          <h2>Sharing ride shows a greater heart</h2>
+          <h2>Your pick of rides at low prices</h2>
           <p>
             Your one stop solution to office commute,travel problems .You must
             know that your commute had an effect on your joy .Join our
@@ -34,6 +38,50 @@ const LandingPage = () => {
             Search Ride <ArrowForwardIcon />
           </Button>
         </div>
+      </div>
+
+      {/* Offer Ride Section  */}
+
+      <div className="container offer_ride">
+        <img src={driverImage} alt="" />
+        <div className="offer_ride_text">
+          <h2>Driving in your car soon?</h2>
+          <p>Let's make this your least expensive journey ever.</p>
+
+          <Button>Offer Ride</Button>
+        </div>
+      </div>
+
+      {/* Carpooling benefits */}
+
+      <div className="container c_save">
+        <div className="c_save_text">
+          <h2>Carpooling saves you money</h2>
+          <p>
+            Whether you are car owner/bike owner or Rider <i>RideWithMe.</i> can
+            help you save upto 75% on travel
+          </p>
+
+          <div className="owners">
+            <PeopleIcon fontSize="large" />
+            <div className="owners_text">
+              <h3>Car / Bike Owner</h3>
+              <p>
+                Car / Bike Owners can save upto 75% of their fuel and
+                maintenance costs.
+              </p>
+            </div>
+          </div>
+
+          <div className="riders">
+            <MotorcycleIcon fontSize="large" />
+            <div className="owners_text">
+              <h3>Riders</h3>
+              <p>Riders can save upto 75% of their costs compared to cabs.</p>
+            </div>
+          </div>
+        </div>
+        <img src={c_save} alt="" />
       </div>
     </div>
   );
