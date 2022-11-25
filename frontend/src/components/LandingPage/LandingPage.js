@@ -8,12 +8,12 @@ import driverImage from "../../assets/driver.svg";
 import c_save from "../../assets/carpooling.jpg";
 import PeopleIcon from "@material-ui/icons/People";
 import MotorcycleIcon from "@material-ui/icons/Motorcycle";
+import Footer from "../Footer/Footer";
 
 const LandingPage = () => {
   return (
     <div className="landingpage">
       {/* banner starts here */}
-
       <div className="container banner">
         <div className="banner_text">
           <h2>Your pick of rides at low prices</h2>
@@ -28,9 +28,7 @@ const LandingPage = () => {
           <img src={bannerImg} alt="Banner image" />
         </div>
       </div>
-
       {/* search section starts */}
-
       <div className="search_for_ride">
         <h2>Search for your Ride</h2>
         <div className="search_box">
@@ -39,9 +37,7 @@ const LandingPage = () => {
           </Button>
         </div>
       </div>
-
       {/* Offer Ride Section  */}
-
       <div className="container offer_ride">
         <img src={driverImage} alt="" />
         <div className="offer_ride_text">
@@ -51,9 +47,7 @@ const LandingPage = () => {
           <Button>Offer Ride</Button>
         </div>
       </div>
-
       {/* Carpooling benefits */}
-
       <div className="container c_save">
         <div className="c_save_text">
           <h2>Carpooling saves you money</h2>
@@ -82,7 +76,8 @@ const LandingPage = () => {
           </div>
         </div>
         <img src={c_save} alt="" />
-      </div>
+      </div>{" "}
+      <Footer />
     </div>
   );
 };
