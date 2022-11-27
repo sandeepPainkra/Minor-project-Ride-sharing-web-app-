@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="container nav_inner">
         <div className="nav_left">
           <div className="logo">
-            <NavLink to="/">RideWithMe.</NavLink>
+            <NavLink to="/">RideWithme.</NavLink>
           </div>
           <NavLink to="/" className="active_nav">
             home
