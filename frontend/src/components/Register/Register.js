@@ -25,7 +25,7 @@ const Register = () => {
       <div className="register_right">
         <div className="register_right_inner">
           <h2>Let's get started</h2>
-          <h3>Create an account</h3>
+          <h3>Create an account</h3>dd
           <hr />
         </div>
       </div>
