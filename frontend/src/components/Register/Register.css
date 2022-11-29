@@ -1,0 +1,68 @@
+.register {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.register_left {
+  width: 50%;
+  height: 100vh;
+  background-color: red;
+  background: linear-gradient(90deg, #36b1b7 0%, #b65ad0 100%);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #fff;
+}
+.register_left img {
+  width: 70%;
+}
+.register_left h1 {
+  font-size: 3.6rem;
+  font-weight: 400;
+}
+.register_left p {
+  font-size: 1.3rem;
+}
+.register_left button {
+  width: 70%;
+  background: linear-gradient(90deg, #6eb736 0%, #5a5ad0 100%);
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #fff;
+  border-radius: 1.5rem;
+  box-shadow: -2px 0px 17px 0px #69d92c;
+}
+
+/* Register right starts here  */
+
+.register_right {
+  width: 50%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.register_right .register_right_inner {
+  width: 100%;
+}
+.register_right h2 {
+  font-size: 2.6rem;
+  color: #222843;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.register_right h3 {
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #222843;
+  margin-bottom: 1.2rem;
+}
+.register_right hr {
+  max-width: 70%;
+  border: 0;
+  height: 1px;
+  margin: 1rem auto 3rem;
+  background-color: rgb(191, 188, 188);
+}

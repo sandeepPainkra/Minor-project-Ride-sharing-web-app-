@@ -1,0 +1,13 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.login_left {
+  width: 50%;
+  height: 100vh;
+  background-color: red;
+  background: linear-gradient(90deg, #36b1b7 0%, #b65ad0 100%);
+}
