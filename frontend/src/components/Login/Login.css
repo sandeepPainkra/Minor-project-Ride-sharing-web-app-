@@ -8,6 +8,108 @@
 .login_left {
   width: 50%;
   height: 100vh;
-  background-color: red;
-  background: linear-gradient(90deg, #36b1b7 0%, #b65ad0 100%);
+  background: linear-gradient(90deg, #0a6d35 0%, #802379 100%);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.login_left h1 {
+  font-size: 2.4rem;
+  color: #fff;
+  font-weight: 400;
+}
+
+.login_left p {
+  font-size: 1.3rem;
+  font-size: 400;
+  color: #fff;
+}
+.login_left img {
+  height: 200px;
+  width: fit-content;
+}
+.login_left h1 span {
+  font-size: 2.4rem;
+  color: #ff4e5a;
+  font-weight: 400;
+  font-family: "Pacifico", cursive;
+}
+
+/* Login_right starts here */
+
+.login_right {
+  width: 50%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.login_right .login_right_inner {
+  width: 100%;
+}
+.login_right h2 {
+  font-size: 2.6rem;
+  color: #222843;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.login_right h3 {
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #222843;
+  margin-bottom: 1.2rem;
+}
+.login_right hr {
+  max-width: 50%;
+  border: 0;
+  height: 1px;
+  margin: 1rem auto 3rem;
+  background-color: rgb(191, 188, 188);
+}
+.login_right form {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+}
+
+.MuiFormControl-root {
+  width: 70% !important;
+  margin-bottom: 1.3rem !important;
+  background-color: #e0f3ff;
+  border-radius: 1.3rem;
+}
+.MuiFilledInput-root {
+  font-size: 1.2rem;
+  color: grey;
+}
+
+.MuiFilledInput-underline:before {
+  border-bottom: 0 !important;
+}
+.MuiFilledInput-underline:after {
+  border-bottom: 0px solid rgb(12, 150, 209) !important;
+  border-bottom-left-radius: 3rem !important;
+}
+.login_right form button {
+  width: 50%;
+  background: linear-gradient(90deg, #0a676d 0%, #d200c2 100%);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border-radius: 1.4rem;
+}
+
+.MuiFilledInput-root {
+  background: none !important;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.login_right form p {
+  font-size: 1rem;
+  color: gray;
+  margin-top: 0.7rem;
+}
+.login_right form p a {
+  color: rgb(7, 68, 149);
 }

@@ -76,7 +76,7 @@ const LandingPage = () => {
           </div>
         </div>
         <img src={c_save} alt="" />
-      </div>{" "}
+      </div>
       <Footer />
     </div>
   );
