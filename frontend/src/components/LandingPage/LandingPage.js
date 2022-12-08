@@ -1,7 +1,6 @@
 import React from "react";
 import "./LandingPage.css";
 import bannerImg from "../../assets/car-vector.png";
-import video from "../../assets/Banner-video.mp4";
 import { Button } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import driverImage from "../../assets/driver.svg";
@@ -9,6 +8,7 @@ import c_save from "../../assets/carpooling.jpg";
 import PeopleIcon from "@material-ui/icons/People";
 import MotorcycleIcon from "@material-ui/icons/Motorcycle";
 import Footer from "../Footer/Footer";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
@@ -32,9 +32,11 @@ const LandingPage = () => {
       <div className="search_for_ride">
         <h2>Search for your Ride</h2>
         <div className="search_box">
-          <Button size="large" variant="contained" color="primary">
-            Search Ride <ArrowForwardIcon />
-          </Button>
+          <Link to="/home">
+            <Button size="large" variant="contained" color="primary">
+              Search Ride <ArrowForwardIcon />
+            </Button>
+          </Link>
         </div>
       </div>
       {/* Offer Ride Section  */}

@@ -1,0 +1,51 @@
+.home {
+  width: 100%;
+  height: auto;
+  background: linear-gradient(90deg, #9896f0 0%, #fbc8d5 100%);
+}
+.map_container {
+  width: 100%;
+  /* padding: 0 3rem; */
+}
+
+.map_container img {
+  width: 100%;
+  height: 400px;
+}
+.home_controller {
+  width: 100%;
+  height: 300px;
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+}
+
+.btn_controller {
+  width: 60%;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn {
+  width: 45% !important;
+  padding: 0.8rem 2rem !important;
+  font-size: 1.2rem !important;
+  color: #fff !important;
+  background-color: gray !important;
+  border-radius: 2rem !important;
+  box-shadow: 1px 3px 4px gray !important;
+}
+.search_btn {
+  /* border: 2px solid black !important; */
+  /* background-color: #222843 !important; */
+  background: linear-gradient(90deg, #222843 0%, #025091 100%);
+}
+.offer_btn {
+  background-color: #939fae;
+}
+.btn_controller .MuiSvgIcon-root {
+  font-size: 1.7rem !important;
+  margin-right: 0.6rem;
+}
