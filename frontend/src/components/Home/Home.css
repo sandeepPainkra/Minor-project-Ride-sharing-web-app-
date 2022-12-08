@@ -21,9 +21,9 @@
 }
 
 .btn_controller {
-  width: 60%;
+  width: 70%;
   padding: 2rem;
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
@@ -38,9 +38,8 @@
   box-shadow: 1px 3px 4px gray !important;
 }
 .search_btn {
-  /* border: 2px solid black !important; */
-  /* background-color: #222843 !important; */
   background: linear-gradient(90deg, #222843 0%, #025091 100%);
+  margin-right: 2rem !important;
 }
 .offer_btn {
   background-color: #939fae;
@@ -48,4 +47,72 @@
 .btn_controller .MuiSvgIcon-root {
   font-size: 1.7rem !important;
   margin-right: 0.6rem;
+}
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+
+.form_container {
+  width: 100%;
+  height: auto;
+  padding: 2rem;
+  background-color: gray;
+  border-radius: 0.6rem;
+  position: relative;
+}
+.form_back {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 0;
+  background-color: rgb(204, 204, 204) !important;
+  position: absolute !important;
+  right: 1rem !important;
+  bottom: 1rem !important;
+}
+.form_container form {
+  margin: 0 auto;
+  text-align: center;
+}
+.input_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form_controller {
+  width: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form_container .MuiSvgIcon-root {
+  color: #3f505f;
+}
+.form_container .green {
+  color: green !important;
+}
+
+.form_container input {
+  width: 80%;
+  font-size: 1rem;
+  color: gray;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid gray;
+  border-radius: 0.3rem;
+  height: 3rem;
+}
+
+form button {
+  width: 30%;
+  height: 3rem;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(90deg, #626262 0%, #9bc5c3 100%);
+  margin-top: 2rem !important;
+  font-size: 1.2rem !important  ;
+  color: #fff !important;
+  border-radius: 1rem !important;
 }

@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import mapImage from "../../assets/map.png";
 import Navbar from "../Navbar/Navbar.js";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import { Link } from "react-router-dom";
 import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import { Button } from "@material-ui/core";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import SearchIcon from "@material-ui/icons/Search";
 import PeopleIcon from "@material-ui/icons/People";
 
 const Home = () => {
+  const user = useState(false);
+  const [isClick, setIsClick] = useState(false);
+
+  const SearchRideClick = () => {
+    setIsClick(true);
+  };
+  const Back_button_click = () => {
+    setIsClick(false);
+  };
+  console.log(isClick);
   return (
     <div className="home">
       <Navbar />
@@ -16,15 +30,53 @@ const Home = () => {
           <img src={mapImage} alt="Map image" />
         </div>
 
-        <div className="home_controller">
-          <div className="btn_controller">
-            <Button className="btn search_btn">
+        <div className="home_controller ">
+          <div
+            // className="btn_controller "
+            className={!isClick ? "btn_controller show" : "btn_controller hide"}
+          >
+            <Button onClick={SearchRideClick} className="btn search_btn">
               <DriveEtaIcon />
               Search Ride
             </Button>
-            <Button className="btn offer_btn">
-              <PeopleIcon />
-              Offer Ride
+            <Link to="/offer-ride">
+              <Button className="btn offer_btn">
+                <PeopleIcon />
+                Offer Ride
+              </Button>
+            </Link>
+          </div>
+
+          {/*  Form section starts here */}
+
+          <div
+            className={!isClick ? "form_container hide" : "form_container show"}
+          >
+            <form>
+              <div className="input_container">
+                <div className="form_controller">
+                  <FiberManualRecordIcon fontSize="large" className="green" />
+                  <input
+                    type="text"
+                    placeholder="ridewithme - Enter your pikup location.."
+                  />
+                </div>
+                <div className="form_controller">
+                  <FiberManualRecordIcon fontSize="large" />
+                  <input type="text" placeholder="Enter your Drop location.." />
+                </div>
+                <div className="form_controller">
+                  <input type="date" />
+                </div>
+              </div>
+              <Button>
+                <SearchIcon style={{ color: "#fff", fontSize: "1.7rem" }} />
+                Search
+              </Button>
+            </form>
+
+            <Button onClick={Back_button_click} className="form_back">
+              <ChevronLeftIcon fontSize="large" />
             </Button>
           </div>
         </div>

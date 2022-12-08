@@ -6,6 +6,7 @@ import LandingPage from "./components/LandingPage/LandingPage.js";
 import Login from "./components/Login/Login.js";
 import Register from "./components/Register/Register.js";
 import Home from "./components/Home/Home.js";
+import OfferRide from "./components/OfferRide/OfferRide.js";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/offer-ride" element={<OfferRide />} />
         </Routes>
       </Router>
     </div>
