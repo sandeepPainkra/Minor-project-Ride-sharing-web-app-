@@ -9,10 +9,12 @@ import PeopleIcon from "@material-ui/icons/People";
 import MotorcycleIcon from "@material-ui/icons/Motorcycle";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
 
 const LandingPage = () => {
   return (
     <div className="landingpage">
+      <Navbar />
       {/* banner starts here */}
       <div className="container banner">
         <div className="banner_text">
@@ -40,7 +42,7 @@ const LandingPage = () => {
         </div>
       </div>
       {/* Offer Ride Section  */}
-      <div className="container offer_ride">
+      <div className="container LandingPage_offer_ride">
         <img src={driverImage} alt="" />
         <div className="offer_ride_text">
           <h2>Driving in your car soon?</h2>

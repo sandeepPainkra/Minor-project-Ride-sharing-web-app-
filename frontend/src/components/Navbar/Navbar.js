@@ -11,10 +11,10 @@ const Navbar = () => {
           <div className="logo">
             <NavLink to="/">RideWithme.</NavLink>
           </div>
-          <NavLink to="/" className="active_nav">
+          <NavLink to="/home" className="active_nav">
             home
           </NavLink>
-          <NavLink to="/ride">Search Ride</NavLink>
+          <NavLink to="/myrides">My Ride</NavLink>
           <NavLink to="/about">about us</NavLink>
           <NavLink to="/blog">Blog </NavLink>
         </div>

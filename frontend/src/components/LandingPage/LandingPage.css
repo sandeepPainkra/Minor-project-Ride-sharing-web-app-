@@ -112,29 +112,29 @@
 
 /* Offer Ride section starts here */
 
-.offer_ride {
+.LandingPage_offer_ride {
   padding: 2rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.offer_ride_text {
+.LandingPage_offer_ride_text {
   padding-left: 3rem;
 }
 
-.offer_ride h2 {
+.LandingPage_offer_ride h2 {
   font-size: 3rem;
   font-weight: 400;
   color: #222843;
 }
 
-.offer_ride p {
+.LandingPage_offer_ride p {
   font-size: 1rem;
   color: gray;
   margin-top: 0.5rem;
   margin-bottom: 1.7rem;
 }
-.offer_ride button {
+.LandingPage_offer_ride button {
   width: 9.3rem;
   background-color: #222843;
   height: 3rem;
@@ -143,7 +143,7 @@
   font-size: 1rem;
   font-weight: 400;
 }
-.offer_ride button:hover {
+.LandingPage_offer_ride button:hover {
   background-color: #1a483c;
 }
 

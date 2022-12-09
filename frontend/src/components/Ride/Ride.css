@@ -1,0 +1,73 @@
+.ride {
+  margin-bottom: 2rem;
+}
+.ride_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.9rem 2rem !important;
+}
+
+.ride_vehicle {
+  display: flex;
+  align-items: center;
+  background-color: rgb(233, 237, 241);
+  padding: 0.7rem 2rem;
+  border-radius: 1rem;
+}
+
+.ride_vehicle p {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-right: 2rem;
+}
+.ride_vehicle p span {
+  color: grey;
+  font-size: 1rem;
+  margin-left: 0.4rem;
+}
+.date_charge {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  margin: 0.4rem 2rem;
+}
+
+.date_charge p {
+  margin-right: 3rem;
+}
+.ride_location {
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.ride_location p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+.ride_location p .MuiSvgIcon-root {
+  font-size: 1.5rem;
+  color: green;
+  margin-right: 0.3rem;
+}
+.ride_location .drop_icon {
+  color: red !important;
+}
+
+.ride_right {
+  display: flex;
+  align-items: center;
+}
+
+.ride_right .bell_icon {
+  margin-right: 2rem !important;
+}
+
+.ride_right .bell_icon .MuiSvgIcon-root {
+  color: green !important;
+}

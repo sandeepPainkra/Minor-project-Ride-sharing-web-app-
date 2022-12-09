@@ -1,0 +1,17 @@
+.myRides {
+  width: 100%;
+  min-height: 93vh;
+  padding: 2rem 0;
+  background: linear-gradient(90deg, #e2e2e2, #e3d2c4);
+}
+
+.myRides h2 {
+  font-size: 3rem;
+  font-weight: 300;
+  color: grey;
+  margin-bottom: 2rem;
+}
+
+.myRides .ride_nav {
+  margin: 0.7rem 0 2rem;
+}
