@@ -14,9 +14,9 @@ userRouter.post("/user/signup", async (req, res) => {
   const isUserExist = await User.findOne({ email: email });
   try {
     if (isUserExist) {
-      res.status(402).json({ status: "err", message: "User Allready Exist!!" });
+      res.status(401).json({ status: "err", message: "User Allready Exist!!" });
     } else if (!name || !email || !phone || !password) {
-      res.status(402).json({ status: "err", message: "Fill all the Feild!!" });
+      res.status(401).json({ status: "err", message: "Fill all the Feild!!" });
     } else {
       bcrypt.hash(password, 12, (err, hashed) => {
         if (hashed) {
@@ -49,20 +49,31 @@ userRouter.post("/user/login", async (req, res) => {
     } else {
       User.findOne({ email: email }).then((savedUser) => {
         if (!savedUser) {
-          res.status(402).json({ error: "User Id not found!!" });
+          res.status(401).json({ error: "User Id not found!!" });
         } else {
-          bcrypt.compare(password, savedUser.password).then((doMatch) => {
-            if (doMatch) {
-              token = User.generateAuthToken();
-              console.log(token);
-              // token = jwt.sign({ _id: savedUser._id }, JWT_SECERET_KEY);
-              // console.log(token);
-              // const { _id, name, email } = savedUser;
-              // res.json({ message: "success", token: token, _id, name, email });
-            } else {
-              res.status(401).json({ error: "Password doesn't match!!" });
-            }
-          });
+          bcrypt
+            .compare(password, savedUser.password)
+            .then((doMatch) => {
+              if (doMatch) {
+                token = jwt.sign({ _id: savedUser._id }, JWT_SECERET_KEY);
+                savedUser.tokens.push({ token: token });
+                savedUser.save();
+
+                // res.cookie("jwt_token", savedUser.tokens[0]?.token, {
+                //   expires: new Date(Date.now() + 25892000000),
+                //   httpOnly: true,
+                // });
+                const { _id, name, email } = savedUser;
+                res.json({
+                  message: "success",
+                  token: savedUser.tokens[0].token,
+                  user: { _id, name, email },
+                });
+              } else {
+                res.status(401).json({ error: "Password doesn't match!!" });
+              }
+            })
+            .catch((err) => console.log(err));
         }
       });
     }

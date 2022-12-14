@@ -1,18 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Register.css";
 import RegisterCarImg from "../../assets/smart-car.png";
-import {
-  Button,
-  FormControl,
-  FormHelperText,
-  Input,
-  InputLabel,
-  TextField,
-} from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Button, TextField } from "@material-ui/core";
+import { Link, useNavigate } from "react-router-dom";
 
-// color : background: linear-gradient(90deg, #36B1B7 0%, #B65AD0 100%);
 const Register = () => {
+  const nevigate = useNavigate();
+  const [input, setInput] = useState({
+    Name: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+
+  const InputEvent = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+
+  const SubmitEvent = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:5000/api/user/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: input.Name,
+        email: input.email,
+        phone: input.phone,
+        password: input.password,
+      }),
+    });
+
+    const data = response.json();
+    if (!data || data.error) {
+      alert(data.error);
+    } else {
+      alert(data.message);
+      nevigate("/login");
+    }
+
+    setInput({
+      Name: "",
+      email: "",
+      phone: "",
+      password: "",
+    });
+  };
+
   return (
     <div className="register">
       <div className="register_left">
@@ -31,38 +72,50 @@ const Register = () => {
           <h3>Create an account</h3>
           <hr />
 
-          <form noValidate autoComplete="off">
+          <form method="post" onSubmit={SubmitEvent}>
             <TextField
+              required
+              value={input.Name}
+              name="Name"
+              onChange={InputEvent}
               className="textfield"
               id="filled-basic"
-              label="Username"
+              label="Enter Full Name"
               variant="filled"
             />
             <TextField
+              required
+              value={input.email}
+              name="email"
+              onChange={InputEvent}
               className="textfield"
               id="filled-basic"
               label="Enter Email Id"
               variant="filled"
             />
             <TextField
+              required
+              value={input.phone}
+              name="phone"
+              onChange={InputEvent}
               className="textfield"
               id="filled-basic"
               label="Enter Your Phone no."
               variant="filled"
             />
             <TextField
+              required
+              value={input.password}
+              name="password"
+              onChange={InputEvent}
               className="textfield"
               id="filled-basic"
               label="Enter Password"
               variant="filled"
+              type="password"
             />
-            <TextField
-              className="textfield"
-              id="filled-basic"
-              label="Confirm Password"
-              variant="filled"
-            />
-            <Button>Sign Up</Button>
+
+            <Button type="submit">Sign Up</Button>
             <p>
               Allready have account? <Link to="/login">Login</Link>
             </p>
