@@ -37,8 +37,9 @@ userRouter.post("/user/signup", async (req, res) => {
     console.log(error);
   }
 });
-
+ 
 userRouter.post("/login", (req, res) => {
   const { name, email, phone, password } = req.body;
 });
+
 module.exports = userRouter;
