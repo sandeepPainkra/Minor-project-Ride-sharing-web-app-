@@ -1,7 +1,9 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 const User = require("../Models/User");
 const userRouter = express.Router();
 const bcrypt = require("bcrypt");
+const { JWT_SECERET_KEY } = require("../Keys");
 
 userRouter.get("/", (req, res, next) => {
   res.send("hello world!!!");
@@ -37,9 +39,36 @@ userRouter.post("/user/signup", async (req, res) => {
     console.log(error);
   }
 });
- 
-userRouter.post("/login", (req, res) => {
+// res.status(200).json({ message: "Successfull login", result });
+userRouter.post("/user/login", async (req, res) => {
   const { name, email, phone, password } = req.body;
+  let token;
+  try {
+    if (!email || !password) {
+      res.status(400).json({ error: "Fill the all the required field!!" });
+    } else {
+      User.findOne({ email: email }).then((savedUser) => {
+        if (!savedUser) {
+          res.status(402).json({ error: "User Id not found!!" });
+        } else {
+          bcrypt.compare(password, savedUser.password).then((doMatch) => {
+            if (doMatch) {
+              token = User.generateAuthToken();
+              console.log(token);
+              // token = jwt.sign({ _id: savedUser._id }, JWT_SECERET_KEY);
+              // console.log(token);
+              // const { _id, name, email } = savedUser;
+              // res.json({ message: "success", token: token, _id, name, email });
+            } else {
+              res.status(401).json({ error: "Password doesn't match!!" });
+            }
+          });
+        }
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = userRouter;
