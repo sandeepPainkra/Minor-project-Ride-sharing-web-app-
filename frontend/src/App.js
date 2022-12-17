@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar.js";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage.js";
 import Login from "./components/Login/Login.js";
 import Register from "./components/Register/Register.js";
@@ -10,8 +15,21 @@ import OfferRide from "./components/OfferRide/OfferRide.js";
 import MyRides from "./components/MyRides/MyRidesAll.js";
 import MyRidesOngoing from "./components/MyRides/MyRidesOngoing.js";
 import MyRidesDone from "./components/MyRides/MyRidesDone.js";
+import { useDispatch } from "react-redux";
+import { setUser } from "./Redux/actions/userAction.js";
 
 const App = () => {
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
+  useEffect(() => {
+    if (user) {
+      dispatch(setUser(user));
+    } else {
+      // navigate("/");
+    }
+  }, [user]);
   return (
     <div className="app">
       <Router>

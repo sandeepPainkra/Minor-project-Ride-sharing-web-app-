@@ -7,9 +7,12 @@ const cors = require("cors");
 
 app.use(express.json());
 app.use(cors());
-mongoose.connect(DB, (req, res) => {
-  console.log("Connection successfully");
-});
+mongoose
+  .connect(DB)
+  .then((req, res) => {
+    console.log("Connection successfully");
+  })
+  .catch((err) => console.log(err));
 app.use("/api/", userRouter);
 
 app.listen(PORT, () => {

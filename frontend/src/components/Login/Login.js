@@ -5,8 +5,11 @@ import parkingimg from "../../assets/parking.png";
 import "./Login.css";
 import CloseIcon from "@material-ui/icons/Close";
 import { IconButton, Snackbar } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../Redux/actions/userAction";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const nevigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const [input, setInput] = useState({
@@ -46,7 +49,10 @@ const Login = () => {
       console.log(data.error);
     } else {
       setOpen(true);
-      console.log(data);
+
+      dispatch(setUser(data.user));
+      console.log(data.user);
+      localStorage.setItem("user", JSON.stringify(data.user));
       nevigate("/home");
     }
   };

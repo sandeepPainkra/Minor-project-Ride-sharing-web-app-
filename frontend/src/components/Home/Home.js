@@ -9,9 +9,12 @@ import { Button } from "@material-ui/core";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import SearchIcon from "@material-ui/icons/Search";
 import PeopleIcon from "@material-ui/icons/People";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const user = useState(false);
+  const user = useSelector((state) => state.User);
+  // const user = useState(false);
+  console.log(user, "kk");
   const [isClick, setIsClick] = useState(false);
 
   const SearchRideClick = () => {

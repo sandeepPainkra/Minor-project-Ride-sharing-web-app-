@@ -4,11 +4,14 @@ const User = require("../Models/User");
 const userRouter = express.Router();
 const bcrypt = require("bcrypt");
 const { JWT_SECERET_KEY } = require("../Keys");
+const LoginRequired = require("../middleware/LoginRequired");
 
 userRouter.get("/", (req, res, next) => {
   res.send("hello world!!!");
 });
-
+userRouter.get("/user/res", LoginRequired, (req, res) => {
+  res.send("this is restricted page using token !!");
+});
 userRouter.post("/user/signup", async (req, res) => {
   const { name, email, password, phone, image } = req.body;
   const isUserExist = await User.findOne({ email: email });
@@ -59,15 +62,10 @@ userRouter.post("/user/login", async (req, res) => {
                 savedUser.tokens.push({ token: token });
                 savedUser.save();
 
-                // res.cookie("jwt_token", savedUser.tokens[0]?.token, {
-                //   expires: new Date(Date.now() + 25892000000),
-                //   httpOnly: true,
-                // });
                 const { _id, name, email } = savedUser;
                 res.json({
                   message: "success",
-                  token: savedUser.tokens[0].token,
-                  user: { _id, name, email },
+                  user: { _id, name, email, token: savedUser.tokens[0].token },
                 });
               } else {
                 res.status(401).json({ error: "Password doesn't match!!" });
