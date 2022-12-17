@@ -8,7 +8,6 @@ import Navbar from "../Navbar/Navbar";
 const OfferRide = () => {
   return (
     <>
-      <Navbar />
       <div className="offer_ride">
         <div className="offer_ride_container">
           <h2>Offer a Ride</h2>

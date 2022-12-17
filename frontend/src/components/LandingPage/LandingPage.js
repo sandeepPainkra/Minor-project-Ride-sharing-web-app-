@@ -14,7 +14,6 @@ import Navbar from "../Navbar/Navbar";
 const LandingPage = () => {
   return (
     <div className="landingpage">
-      <Navbar />
       {/* banner starts here */}
       <div className="container banner">
         <div className="banner_text">

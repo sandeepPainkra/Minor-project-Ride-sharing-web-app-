@@ -67,8 +67,10 @@ userRouter.post("/user/login", async (req, res) => {
                   message: "success",
                   user: { _id, name, email, token: savedUser.tokens[0].token },
                 });
+                window.location("/home");
               } else {
                 res.status(401).json({ error: "Password doesn't match!!" });
+                window.location("/");
               }
             })
             .catch((err) => console.log(err));

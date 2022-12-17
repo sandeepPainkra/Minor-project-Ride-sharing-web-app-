@@ -26,7 +26,6 @@ const Home = () => {
   console.log(isClick);
   return (
     <div className="home">
-      <Navbar />
       <div className="second_nav"></div>
       <div className="home_body">
         <div className="map_container">

@@ -15,34 +15,49 @@ import OfferRide from "./components/OfferRide/OfferRide.js";
 import MyRides from "./components/MyRides/MyRidesAll.js";
 import MyRidesOngoing from "./components/MyRides/MyRidesOngoing.js";
 import MyRidesDone from "./components/MyRides/MyRidesDone.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./Redux/actions/userAction.js";
 
-const App = () => {
-  // const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const user = JSON.parse(localStorage.getItem("user"));
+const Routing = () => {
+  const nevigate = useNavigate();
+  const user = useSelector((state) => state.User);
   console.log(user);
   useEffect(() => {
     if (user) {
-      dispatch(setUser(user));
+      nevigate("/home");
     } else {
-      // navigate("/");
+      nevigate("/");
     }
   }, [user]);
   return (
+    <>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/offer-ride" element={<OfferRide />} />
+        <Route path="/myrides" element={<MyRides />} />
+        <Route path="/myrides/ongoing-ride" element={<MyRidesOngoing />} />
+        <Route path="/myrides/complete-ride" element={<MyRidesDone />} />
+      </Routes>
+    </>
+  );
+};
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      dispatch(setUser(user));
+    }
+  }, []);
+  return (
     <div className="app">
       <Router>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/offer-ride" element={<OfferRide />} />
-          <Route path="/myrides" element={<MyRides />} />
-          <Route path="/myrides/ongoing-ride" element={<MyRidesOngoing />} />
-          <Route path="/myrides/complete-ride" element={<MyRidesDone />} />
-        </Routes>
+        <Navbar />
+        <Routing />
       </Router>
     </div>
   );

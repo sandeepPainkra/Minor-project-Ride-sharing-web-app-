@@ -24,7 +24,6 @@ const MyRides = () => {
 
   return (
     <>
-      <Navbar />
       <div className="myRides">
         <div className="container">
           <h2>My Rides</h2>

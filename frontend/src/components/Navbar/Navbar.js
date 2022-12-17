@@ -2,16 +2,22 @@ import React from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { Avatar, Button, IconButton, Menu, MenuItem } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeUser } from "../../Redux/actions/userAction";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const user = useSelector((state) => state.User);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+  const RemoveUserClick = () => {
+    dispatch(removeUser());
+    localStorage.clear();
+    console.log("clicked");
+  };
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -61,7 +67,7 @@ const Navbar = () => {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={(handleClose, RemoveUserClick)}>Logout</MenuItem>
         </Menu>
       </div>
     </div>
