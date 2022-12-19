@@ -29,12 +29,18 @@ const Navbar = () => {
           <div className="logo">
             <NavLink to="/">RideWithme.</NavLink>
           </div>
-          <NavLink to="/home" className="active_nav">
-            home
+          <NavLink to={user ? "/search-ride" : "/"} className="active_nav">
+            Search-Ride
           </NavLink>
-          <NavLink to="/myrides">My Ride</NavLink>
-          <NavLink to="/about">about us</NavLink>
-          <NavLink to="/blog">Blog </NavLink>
+          {user ? (
+            <>
+              <NavLink to="/myrides">My Ride</NavLink>
+              <NavLink to="/about">My Profile</NavLink>
+              <NavLink to="/blog">Dashboard</NavLink>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
         {!user ? (
           <>

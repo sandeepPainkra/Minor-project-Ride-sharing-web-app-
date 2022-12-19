@@ -21,10 +21,9 @@ import { setUser } from "./Redux/actions/userAction.js";
 const Routing = () => {
   const nevigate = useNavigate();
   const user = useSelector((state) => state.User);
-  console.log(user);
   useEffect(() => {
     if (user) {
-      nevigate("/home");
+      nevigate("/search-ride");
     } else {
       nevigate("/");
     }
@@ -35,7 +34,7 @@ const Routing = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/search-ride" element={<Home />} />
         <Route path="/offer-ride" element={<OfferRide />} />
         <Route path="/myrides" element={<MyRides />} />
         <Route path="/myrides/ongoing-ride" element={<MyRidesOngoing />} />
@@ -46,7 +45,6 @@ const Routing = () => {
 };
 const App = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {

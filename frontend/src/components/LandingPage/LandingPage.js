@@ -10,8 +10,10 @@ import MotorcycleIcon from "@material-ui/icons/Motorcycle";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import { useSelector } from "react-redux";
 
 const LandingPage = () => {
+  const user = useSelector((state) => state.User);
   return (
     <div className="landingpage">
       {/* banner starts here */}
@@ -33,7 +35,7 @@ const LandingPage = () => {
       <div className="search_for_ride">
         <h2>Search for your Ride</h2>
         <div className="search_box">
-          <Link to="/home">
+          <Link to={user ? "/search-ride" : "/login"}>
             <Button size="large" variant="contained" color="primary">
               Search Ride <ArrowForwardIcon />
             </Button>

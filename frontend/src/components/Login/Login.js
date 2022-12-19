@@ -53,7 +53,7 @@ const Login = () => {
       dispatch(setUser(data.user));
       console.log(data.user);
       localStorage.setItem("user", JSON.stringify(data.user));
-      nevigate("/home");
+      nevigate("/search-ride");
     }
   };
 
@@ -137,6 +137,7 @@ const Login = () => {
       {/* Snakbar starts here */}
 
       <Snackbar
+        className="snakbar_alert"
         anchorOrigin={{
           vertical: "top",
           horizontal: "center",
