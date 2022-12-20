@@ -15,6 +15,7 @@ import OfferRide from "./components/OfferRide/OfferRide.js";
 import MyRides from "./components/MyRides/MyRidesAll.js";
 import MyRidesOngoing from "./components/MyRides/MyRidesOngoing.js";
 import MyRidesDone from "./components/MyRides/MyRidesDone.js";
+import MyProfile from "./components/MyProfile/MyProfile.js";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./Redux/actions/userAction.js";
 
@@ -37,6 +38,7 @@ const Routing = () => {
         <Route path="/search-ride" element={<Home />} />
         <Route path="/offer-ride" element={<OfferRide />} />
         <Route path="/myrides" element={<MyRides />} />
+        <Route path="/profile" element={<MyProfile />} />
         <Route path="/myrides/ongoing-ride" element={<MyRidesOngoing />} />
         <Route path="/myrides/complete-ride" element={<MyRidesDone />} />
       </Routes>

@@ -31,7 +31,13 @@ userRouter.post("/user/signup", async (req, res) => {
             password: hashed,
           });
           user.save().then((user) => {
-            res.status(200).json({ status: "ok", user });
+            res
+              .status(200)
+              .json({
+                status: "ok",
+                user,
+                message: "You Account has successfully Created",
+              });
           });
         } else {
           console.log("Request Invalid!!!");

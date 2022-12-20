@@ -11,7 +11,6 @@ import { setUser } from "../../Redux/actions/userAction";
 const Login = () => {
   const dispatch = useDispatch();
   const nevigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -46,25 +45,15 @@ const Login = () => {
 
     const data = await response.json();
     if (!data || data.error) {
+      alert(data.error);
       console.log(data.error);
     } else {
-      setOpen(true);
-
       dispatch(setUser(data.user));
       console.log(data.user);
       localStorage.setItem("user", JSON.stringify(data.user));
+      alert("You are successfully loged in 💚:)");
       nevigate("/search-ride");
     }
-  };
-
-  // Snakbar Controller starts here
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
   };
 
   return (
@@ -135,30 +124,6 @@ const Login = () => {
       </div>
 
       {/* Snakbar starts here */}
-
-      <Snackbar
-        className="snakbar_alert"
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        message="You are successfully Loged in"
-        action={
-          <React.Fragment>
-            <IconButton
-              size="small"
-              aria-label="close"
-              color="inherit"
-              onClick={handleClose}
-            >
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
-      />
     </div>
   );
 };

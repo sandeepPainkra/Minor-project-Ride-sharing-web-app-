@@ -35,7 +35,7 @@ const Navbar = () => {
           {user ? (
             <>
               <NavLink to="/myrides">My Ride</NavLink>
-              <NavLink to="/about">My Profile</NavLink>
+              <NavLink to="/profile">My Profile</NavLink>
               <NavLink to="/blog">Dashboard</NavLink>
             </>
           ) : (
