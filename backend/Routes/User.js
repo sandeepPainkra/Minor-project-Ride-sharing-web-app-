@@ -5,7 +5,7 @@ const userRouter = express.Router();
 const bcrypt = require("bcrypt");
 const { JWT_SECERET_KEY } = require("../Keys");
 const LoginRequired = require("../middleware/LoginRequired");
-
+// this is demo practis to check git is working or not
 userRouter.get("/", (req, res, next) => {
   res.send("hello world!!!");
 });
@@ -31,13 +31,11 @@ userRouter.post("/user/signup", async (req, res) => {
             password: hashed,
           });
           user.save().then((user) => {
-            res
-              .status(200)
-              .json({
-                status: "ok",
-                user,
-                message: "You Account has successfully Created",
-              });
+            res.status(200).json({
+              status: "ok",
+              user,
+              message: "You Account has successfully Created",
+            });
           });
         } else {
           console.log("Request Invalid!!!");

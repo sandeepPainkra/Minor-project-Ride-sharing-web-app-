@@ -114,6 +114,10 @@ const Register = () => {
               variant="filled"
               type="password"
             />
+            <div className="file_input">
+              Select Profile Image
+              <input type="file" />
+            </div>
 
             <Button type="submit">Sign Up</Button>
             <p>

@@ -1,14 +1,15 @@
 .myprofile {
   width: 100%;
-  height: 100vh;
+  height: 92vh;
   background: linear-gradient(90deg, #c0e9ff 0%, #ff7082 100%);
   display: grid;
   place-items: center;
+  color: #222843;
 }
 
 .profile_container {
   width: 80%;
-  height: 400px;
+  height: auto;
   padding: 2rem;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -16,4 +17,52 @@
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.profile_image {
+  text-align: center;
+  width: 100%;
+  margin: 0 0 2rem;
+}
+.profile_image img {
+  height: 200px;
+  width: fit-content;
+  border-radius: 50rem;
+}
+.profile_info {
+  width: 100%;
+  text-align: center;
+}
+.profile_info h2 {
+  font-size: 2.9rem;
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+}
+.profile_info .profile_title {
+  font-size: 1rem;
+}
+
+.profile_contact_details {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+  margin: 1.6rem 0;
+}
+.profile_inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 33%;
+  margin-bottom: 2rem;
+}
+.profile_inner .MuiSvgIcon-root {
+  margin-right: 0.6rem;
+  font-size: 1.8rem;
+}
+
+.profile_nevigateion {
+  width: 100%;
 }

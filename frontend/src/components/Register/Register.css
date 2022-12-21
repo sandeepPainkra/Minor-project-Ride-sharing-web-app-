@@ -115,3 +115,12 @@
 .register_right form p a {
   color: rgb(7, 68, 149);
 }
+
+.file_input {
+  width: 70%;
+  background-color: #e0f3ff;
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+  color: gray;
+}
