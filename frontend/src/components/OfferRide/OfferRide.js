@@ -17,7 +17,7 @@ const OfferRide = () => {
               <input type="text" placeholder="Destination Location.." />
               <input type="text" placeholder="No. of Passengers..." />
               <input type="date" name="" id="" />
-              <input type="text" placeholder="&#128337;" />
+              <input type="text" placeholder="&#128337;Pickup Time" />
               <input type="text" placeholder="Charges Amount" />
             </div>
             <p>Vehicle Details</p>
@@ -26,6 +26,9 @@ const OfferRide = () => {
               <input type="text" placeholder="Model" />
               <input type="text" placeholder="year" />
               <input type="text" placeholder="Registration No. " />
+              <div className="vehicle_img">
+                Vehicle Image: <input type="file" />
+              </div>
             </div>
 
             <Button>

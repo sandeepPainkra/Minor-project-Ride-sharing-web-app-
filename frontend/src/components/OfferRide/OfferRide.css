@@ -49,6 +49,22 @@
   border-radius: 1rem;
   margin: 0.8rem;
 }
+.vehicle_details .vehicle_img {
+  color: #fff;
+  padding-left: 3rem;
+  font-size: 1.2rem;
+}
+.vehicle_details .vehicle_img input {
+  width: 45%;
+  padding: 0.5rem 2rem;
+  font-size: 1.2rem;
+  color: grey;
+  outline: none;
+  border: 1px solid grey;
+  border-radius: 1rem;
+  margin: 0.8rem;
+  background-color: #fff;
+}
 .offer_ride_container form p {
   color: #fff;
   font-size: 1.2rem;

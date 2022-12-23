@@ -80,7 +80,7 @@ const Login = () => {
               onChange={InputEvent}
               className="textfield"
               id="filled-basic"
-              label="Username"
+              label="Full Name"
               variant="filled"
             />
             <TextField
