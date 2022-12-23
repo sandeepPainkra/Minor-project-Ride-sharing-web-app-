@@ -6,13 +6,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const nevigate = useNavigate();
+  const [images, setImage] = useState("");
   const [input, setInput] = useState({
     Name: "",
     email: "",
     phone: "",
     password: "",
   });
-
+  console.log(images);
   const InputEvent = (e) => {
     const { name, value } = e.target;
     setInput((prev) => {
@@ -25,33 +26,39 @@ const Register = () => {
 
   const SubmitEvent = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/user/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: input.Name,
-        email: input.email,
-        phone: input.phone,
-        password: input.password,
-      }),
-    });
+    // const response = await fetch("http://localhost:5000/api/user/signup", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: input.Name,
+    //     email: input.email,
+    //     phone: input.phone,
+    //     password: input.password,
+    //   }),
+    // });
 
-    const data = response.json();
-    if (!data || data.error) {
-      alert(data.error);
-    } else {
-      alert(data.message);
-      nevigate("/login");
-    }
+    // const data = response.json();
+    // if (!data || data.error) {
+    //   alert(data.error);
+    // } else {
+    //   alert(data.message);
+    //   nevigate("/login");
+    // }
 
-    setInput({
-      Name: "",
-      email: "",
-      phone: "",
-      password: "",
-    });
+    // setInput({
+    //   Name: "",
+    //   email: "",
+    //   phone: "",
+    //   password: "",
+    // });
+
+    // Upload an profile image into cloudinary
+    const data = new FormData();
+    FormData.append("file", images);
+    FormData.append("upload_preset", "Ride-sharing(minor-project)");
+    FormData.append("cloud_name", "sandeep678");
   };
 
   return (
@@ -116,7 +123,10 @@ const Register = () => {
             />
             <div className="file_input">
               Select Profile Image
-              <input type="file" />
+              <input
+                type="file"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
             </div>
 
             <Button type="submit">Sign Up</Button>
