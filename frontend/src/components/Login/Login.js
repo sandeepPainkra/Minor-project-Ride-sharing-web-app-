@@ -14,7 +14,6 @@ const Login = () => {
   const [input, setInput] = useState({
     name: "",
     email: "",
-    phone: "",
     password: "",
   });
 
@@ -38,7 +37,6 @@ const Login = () => {
       body: JSON.stringify({
         name: input.name,
         email: input.email,
-        phone: input.phone,
         password: input.password,
       }),
     });
@@ -51,7 +49,8 @@ const Login = () => {
       dispatch(setUser(data.user));
       console.log(data.user);
       localStorage.setItem("user", JSON.stringify(data.user));
-      alert("You are successfully loged in 💚:)");
+      // alert("You are successfully loged in 💚:)");
+      alert(data.message);
       nevigate("/search-ride");
     }
   };
@@ -93,7 +92,7 @@ const Login = () => {
               label="Enter Email Id"
               variant="filled"
             />
-            <TextField
+            {/* <TextField
               required
               value={input.phone}
               name="phone"
@@ -102,7 +101,7 @@ const Login = () => {
               id="filled-basic"
               label="Enter Your Phone no."
               variant="filled"
-            />
+            /> */}
             <TextField
               value={input.password}
               name="password"

@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 const Home = () => {
   const user = useSelector((state) => state.User);
   // const user = useState(false);
-  console.log(user, "kk");
+
   const [isClick, setIsClick] = useState(false);
 
   const SearchRideClick = () => {
@@ -23,7 +23,6 @@ const Home = () => {
   const Back_button_click = () => {
     setIsClick(false);
   };
-  console.log(isClick);
   return (
     <div className="home">
       <div className="second_nav"></div>

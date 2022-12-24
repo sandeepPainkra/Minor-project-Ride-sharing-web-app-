@@ -47,6 +47,7 @@ const Routing = () => {
 };
 const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {

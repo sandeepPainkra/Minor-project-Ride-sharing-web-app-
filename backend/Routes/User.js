@@ -17,9 +17,9 @@ userRouter.post("/user/signup", async (req, res) => {
   const isUserExist = await User.findOne({ email: email });
   try {
     if (isUserExist) {
-      res.status(401).json({ status: "err", message: "User Allready Exist!!" });
+      res.status(400).json({ status: "err", error: "User Allready Exist!!" });
     } else if (!name || !email || !phone || !password) {
-      res.status(401).json({ status: "err", message: "Fill all the Feild!!" });
+      res.status(400).json({ status: "err", error: "Fill all the Feild!!" });
     } else {
       bcrypt.hash(password, 12, (err, hashed) => {
         if (hashed) {
@@ -52,11 +52,13 @@ userRouter.post("/user/login", async (req, res) => {
   let token;
   try {
     if (!email || !password) {
-      res.status(400).json({ error: "Fill the all the required field!!" });
+      res
+        .status(400)
+        .json({ status: "err", error: "Fill the all the required field!!" });
     } else {
       User.findOne({ email: email }).then((savedUser) => {
         if (!savedUser) {
-          res.status(401).json({ error: "User Id not found!!" });
+          res.status(400).json({ status: "err", error: "User Id not found!!" });
         } else {
           bcrypt
             .compare(password, savedUser.password)
@@ -66,14 +68,24 @@ userRouter.post("/user/login", async (req, res) => {
                 savedUser.tokens.push({ token: token });
                 savedUser.save();
 
-                const { _id, name, email } = savedUser;
+                const { _id, name, email, phone, image } = savedUser;
                 res.json({
-                  message: "success",
-                  user: { _id, name, email, token: savedUser.tokens[0].token },
+                  status: "success",
+                  message: "You are successfully loged in💚:)",
+                  user: {
+                    _id,
+                    name,
+                    phone,
+                    email,
+                    image,
+                    token: savedUser.tokens[savedUser.tokens.length - 1].token,
+                  },
                 });
                 // window.location("/home");
               } else {
-                res.status(401).json({ error: "Password doesn't match!!" });
+                res
+                  .status(400)
+                  .json({ status: "err", error: "Password doesn't match!!" });
                 // window.location("/");
               }
             })

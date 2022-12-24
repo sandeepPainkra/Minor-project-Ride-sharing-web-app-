@@ -6,21 +6,27 @@ import EmailIcon from "@material-ui/icons/Email";
 import PhoneIcon from "@material-ui/icons/Phone";
 import SendIcon from "@material-ui/icons/Send";
 import { Button, IconButton } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
 const MyProfile = () => {
+  const user = useSelector((state) => state.User);
   return (
     <div className="myprofile">
       <div className="profile_container">
         <div className="profile_image">
           <IconButton>
             <img
-              src="https://avatars.githubusercontent.com/u/71575268?v=4"
+              src={
+                !user
+                  ? "https://avatars.githubusercontent.com/u/71575268?v=4"
+                  : user?.users?.image
+              }
               alt="profile image"
             />
           </IconButton>
         </div>
         <div className="profile_info">
-          <h2>Sandeep Painkra</h2>
+          <h2>{user?.users?.name}</h2>
           <p className="profile_title">Web Developer from India.</p>
 
           <div className="profile_contact_details">
@@ -33,13 +39,12 @@ const MyProfile = () => {
             <div className="phone profile_inner">
               <PhoneIcon />
               <div className="phone_no">
-                <p>6263495978</p>
-                <p>6269642365</p>
+                <p>{user?.users?.phone}</p>
               </div>
             </div>
             <div className="email profile_inner">
               <EmailIcon />
-              <p>samdeeppainkra@gmail.com</p>
+              <p>{user?.users?.email}</p>
             </div>
             <div className="profile_nevigateion">
               <Button variant="contained" size="large" color="primary">

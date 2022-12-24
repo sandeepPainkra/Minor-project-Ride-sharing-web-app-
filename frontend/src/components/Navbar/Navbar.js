@@ -1,11 +1,12 @@
 import React from "react";
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Avatar, Button, IconButton, Menu, MenuItem } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../Redux/actions/userAction";
 
 const Navbar = () => {
+  const nevigate = useNavigate();
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const user = useSelector((state) => state.User);
@@ -16,12 +17,11 @@ const Navbar = () => {
   const RemoveUserClick = () => {
     dispatch(removeUser());
     localStorage.clear();
-    console.log("clicked");
+    nevigate("/");
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log(user);
   return (
     <div className="navbar">
       <div className="container nav_inner">
@@ -62,7 +62,7 @@ const Navbar = () => {
           </>
         ) : (
           <IconButton onClick={handleClick}>
-            <Avatar />
+            <Avatar src={user.users.image} />
           </IconButton>
         )}
         <Menu

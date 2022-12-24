@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Register.css";
 import RegisterCarImg from "../../assets/smart-car.png";
 import { Button, TextField } from "@material-ui/core";
@@ -23,36 +23,41 @@ const Register = () => {
       };
     });
   };
-
+  useEffect(() => {
+    if (url) {
+      fetch("http://localhost:5000/api/user/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: input.Name,
+          email: input.email,
+          phone: input.phone,
+          image: url,
+          password: input.password,
+        }),
+      }).then(async (response) => {
+        const data = await response.json();
+        console.log(data);
+        if (!data || data.error || data.status == "err") {
+          alert(data.error);
+        } else {
+          alert(data.message);
+          nevigate("/login");
+        }
+        setInput({
+          Name: "",
+          email: "",
+          phone: "",
+          image: "",
+          password: "",
+        });
+      });
+    }
+  }, [url]);
   const SubmitEvent = async (e) => {
     e.preventDefault();
-    // const response = await fetch("http://localhost:5000/api/user/signup", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     name: input.Name,
-    //     email: input.email,
-    //     phone: input.phone,
-    //     password: input.password,
-    //   }),
-    // });
-
-    // const data = response.json();
-    // if (!data || data.error) {
-    //   alert(data.error);
-    // } else {
-    //   alert(data.message);
-    //   nevigate("/login");
-    // }
-
-    // setInput({
-    //   Name: "",
-    //   email: "",
-    //   phone: "",
-    //   password: "",
-    // });
 
     // Upload an profile image into cloudinary
     const data = new FormData();
@@ -68,7 +73,12 @@ const Register = () => {
         return res.json();
       })
       .then((result) => {
-        setUrl(result.url);
+        if (result) {
+          setUrl(result.url);
+          console.log(result);
+        } else {
+          console.log("result not found");
+        }
       })
       .catch((error) => {
         console.log(error);
