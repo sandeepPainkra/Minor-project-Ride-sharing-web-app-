@@ -7,13 +7,13 @@ import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
   const nevigate = useNavigate();
   const [images, setImage] = useState("");
+  const [url, setUrl] = useState();
   const [input, setInput] = useState({
     Name: "",
     email: "",
     phone: "",
     password: "",
   });
-  console.log(images);
   const InputEvent = (e) => {
     const { name, value } = e.target;
     setInput((prev) => {
@@ -56,9 +56,23 @@ const Register = () => {
 
     // Upload an profile image into cloudinary
     const data = new FormData();
-    FormData.append("file", images);
-    FormData.append("upload_preset", "Ride-sharing(minor-project)");
-    FormData.append("cloud_name", "sandeep678");
+    data.append("file", images);
+    data.append("upload_preset", "Ride-sharing(minor-project)");
+    data.append("cloud_name", "sandeep678");
+
+    fetch("https://api.cloudinary.com/v1_1/sandeep678/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        setUrl(result.url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
