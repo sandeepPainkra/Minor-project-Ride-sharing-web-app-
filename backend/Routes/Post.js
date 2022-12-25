@@ -4,7 +4,7 @@ const Post = require("../Models/Post");
 const User = require("../Models/User");
 const PostRoute = express.Router();
 
-PostRoute.post("/api/offer-ride", LoginRequired, async (req, res) => {
+PostRoute.post("/api/offer-ride", async (req, res) => {
   const userId = req.params.userId;
   const { origin, destination, pessangerCount, date, location, postedBy } =
     req.body;
@@ -13,6 +13,7 @@ PostRoute.post("/api/offer-ride", LoginRequired, async (req, res) => {
     if (!origin || !destination || !pessangerCount || !date) {
       res.json({ status: "err", error: "Filled all the Data!!" });
     } else {
+      console.log(location);
       const response = await Post.create({
         origin,
         destination,

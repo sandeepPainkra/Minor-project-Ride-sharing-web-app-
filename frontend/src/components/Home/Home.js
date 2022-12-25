@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import mapImage from "../../assets/map.png";
 import Navbar from "../Navbar/Navbar.js";
@@ -14,16 +14,15 @@ import MapDisplay from "../MapDisplay/MapDisplay.js";
 
 const Home = () => {
   const user = useSelector((state) => state.User);
-  // const user = useState(false);
 
   const [isClick, setIsClick] = useState(false);
-
   const SearchRideClick = () => {
     setIsClick(true);
   };
   const Back_button_click = () => {
     setIsClick(false);
   };
+
   return (
     <div className="home">
       <div className="second_nav"></div>

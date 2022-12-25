@@ -15,17 +15,10 @@ const PostSchema = new mongoose.Schema({
   date: {
     type: String,
   },
-  //   location: {
-  //     type: { type: String },
-  //     coordinates: [],
-  //   },
-  location: [
-    {
-      coordinates: {
-        type: String,
-      },
-    },
-  ],
+  location: {
+    type: Array,
+    coordinates: [],
+  },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
