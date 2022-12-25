@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./MyProfile.css";
 import RoomIcon from "@material-ui/icons/Room";
 import InstagramIcon from "@material-ui/icons/Instagram";
@@ -10,6 +10,18 @@ import { useSelector } from "react-redux";
 
 const MyProfile = () => {
   const user = useSelector((state) => state.User);
+
+  // useEffect(() => {
+  //   fetch(
+  //     "https://api.mapbox.com/directions/v5/mapbox/driving/81.633683%2C21.237947%3B82.147647%2C22.078563?alternatives=true&geometries=geojson&language=en&overview=simplified&steps=true&access_token=pk.eyJ1Ijoic2FuZGVlcDY3OCIsImEiOiJjbGJiejQ1czIxazdlM3BxcDdzbHN1eGN5In0.ZMBlU4n8bZeiZC2ePpc-rA",
+  //     {
+  //       method: "get",
+  //     }
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data))
+  //     .catch((err) => console.log(err));
+  // }, []);
   return (
     <div className="myprofile">
       <div className="profile_container">

@@ -10,6 +10,7 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import SearchIcon from "@material-ui/icons/Search";
 import PeopleIcon from "@material-ui/icons/People";
 import { useSelector } from "react-redux";
+import MapDisplay from "../MapDisplay/MapDisplay.js";
 
 const Home = () => {
   const user = useSelector((state) => state.User);
@@ -28,7 +29,7 @@ const Home = () => {
       <div className="second_nav"></div>
       <div className="home_body">
         <div className="map_container">
-          <img src={mapImage} alt="Map image" />
+          <MapDisplay />
         </div>
 
         <div className="home_controller ">
