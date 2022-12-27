@@ -19,6 +19,34 @@ const PostSchema = new mongoose.Schema({
     type: Array,
     coordinates: [],
   },
+  time: {
+    type: String,
+    required: true,
+  },
+  charges: {
+    type: String,
+    required: true,
+  },
+  brand: {
+    type: String,
+    required: true,
+  },
+  model: {
+    type: String,
+    required: true,
+  },
+  year: {
+    type: String,
+    required: true,
+  },
+  registrationNo: {
+    type: String,
+    required: true,
+  },
+  vehiclePic: {
+    type: String,
+    required: true,
+  },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

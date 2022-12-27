@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 const OfferRide = () => {
   const [coordinates, setCoordinates] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
+  const [isClicked2, setIsClicked2] = useState(false);
   const user = useSelector((state) => state.User);
   const [origin, setOrigin] = useState();
   const [destination, setDestination] = useState();
@@ -14,6 +15,12 @@ const OfferRide = () => {
   const [date, setDate] = useState();
   const [time, setTime] = useState();
   const [charges, setCharges] = useState();
+  const [brand, setBrand] = useState();
+  const [model, setModel] = useState();
+  const [vehiclePic, setVehiclePic] = useState();
+  const [vehicleUrl, setVehicleUrl] = useState();
+  const [year, setYear] = useState();
+  const [registrationNo, setRegistrationNo] = useState();
   const [place1Cordinate, setPlace1Cordinate] = useState([]);
   const [place2Cordinate, setPlace2Cordinate] = useState([]);
   const [placeOptions1, setPlaceOptions1] = useState([]);
@@ -86,7 +93,8 @@ const OfferRide = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setPlace2Cordinate(data.features[0].center);
+        // if any error i will get tomorrow then please remove (?) sign from below
+        setPlace2Cordinate(data.features[0]?.center);
       })
       .catch((err) => console.log(err));
   }, [correctPlaceName2]);
@@ -110,7 +118,6 @@ const OfferRide = () => {
       GetRouteCoordinates();
     }
   }, [place1Cordinate, place2Cordinate]);
-  console.log(routeCoordinates);
 
   const multiPoint =
     routeCoordinates &&
@@ -121,25 +128,80 @@ const OfferRide = () => {
     geometry: { type: "MultiPoint", coordinates: multiPoint },
   };
 
+  // for posting all the offer ride form data into mongoDB Database
+  useEffect(() => {
+    if (vehicleUrl) {
+      const response = fetch("http://localhost:5000/ride/api/offer-ride", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+          // authorization: "Bearer " + user.token,
+        },
+        body: JSON.stringify({
+          origin,
+          destination,
+          pessangerCount: passenger,
+          date: date,
+          time,
+          location: geoJson,
+          charges,
+          // vehicle
+          brand,
+          model,
+          year,
+          registrationNo,
+          vehiclePic: vehicleUrl,
+        }),
+      }).then(async (response) => {
+        const data = await response.json();
+        if (!data || data.status == "err") {
+          alert(data.error);
+        } else {
+          console.log(data);
+          alert(data.message);
+          setOrigin("");
+          setDestination("");
+          setPassenger("");
+          setDate("");
+          setTime("");
+
+          setCharges(""); // vehicle
+          setBrand("");
+          setModel("");
+          setYear("");
+          setRegistrationNo("");
+          setVehiclePic("");
+        }
+      });
+    }
+  }, [vehicleUrl]);
   // for posting data in mongodb databse
   const PostRide = async () => {
-    const response = await fetch("http://localhost:5000/ride/api/offer-ride", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
-      },
-      body: JSON.stringify({
-        origin,
-        destination,
-        pessangerCount: passenger,
-        date: date,
+    // Upload an vehicle image into cloudinary
+    const data = new FormData();
+    data.append("file", vehiclePic);
+    data.append("upload_preset", "Ride-sharing(minor-project)");
+    data.append("cloud_name", "sandeep678");
 
-        location: geoJson,
-      }),
-    });
-    const data = await response.json();
-    console.log(data);
+    fetch("https://api.cloudinary.com/v1_1/sandeep678/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        if (result) {
+          setVehicleUrl(result.url);
+        } else {
+          console.log("result not found");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -159,8 +221,13 @@ const OfferRide = () => {
                 />
                 <div
                   className={
-                    !origin ? "display" : "place_option_container padding block"
+                    !origin || isClicked
+                      ? "place_option_container padding display"
+                      : "place_option_container padding block"
                   }
+                  // className={
+                  //   !origin ? "display" : "place_option_container padding block"
+                  // }
                 >
                   {placeOptions1.map((place) => {
                     return (
@@ -186,8 +253,8 @@ const OfferRide = () => {
                 />
                 <div
                   className={
-                    !destination
-                      ? "display"
+                    !destination || isClicked2
+                      ? "place_option_container padding display"
                       : "place_option_container padding block"
                   }
                 >
@@ -196,7 +263,7 @@ const OfferRide = () => {
                       <Button
                         onClick={(e) => {
                           setCorrectPlaceName2(e.target.innerText);
-                          setIsClicked(true);
+                          setIsClicked2(true);
                         }}
                       >
                         {place.place_name}
@@ -236,22 +303,44 @@ const OfferRide = () => {
             </div>
             <p>Vehicle Details</p>
             <div className="vehicle_details">
-              <input type="text" name="brandName" placeholder="Brand Name" />
-              <input type="text" name="model" placeholder="Model" />
-              <input type="text" name="year" placeholder="year" />
               <input
                 type="text"
+                name="brandName"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+                placeholder="Brand Name"
+              />
+              <input
+                type="text"
+                value={model}
+                onChange={(e) => setModel(e.target.value)}
+                name="model"
+                placeholder="Model"
+              />
+              <input
+                type="text"
+                name="year"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+                placeholder="year"
+              />
+              <input
+                type="text"
+                value={registrationNo}
+                onChange={(e) => setRegistrationNo(e.target.value)}
                 name="registrationNo"
                 placeholder="Registration No. "
               />
               <div className="vehicle_img">
-                Vehicle Image: <input type="file" />
+                Vehicle Image:{" "}
+                <input
+                  onChange={(e) => setVehiclePic(e.target.files[0])}
+                  type="file"
+                />
               </div>
             </div>
 
-            <Button onClick={PostRide}>
-              <Link to="/myrides">Post Ride </Link>
-            </Button>
+            <Button onClick={PostRide}>Post Ride</Button>
           </form>
         </div>
       </div>
