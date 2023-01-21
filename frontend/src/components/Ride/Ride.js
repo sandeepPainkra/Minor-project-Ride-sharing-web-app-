@@ -12,8 +12,14 @@ import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import RoomIcon from "@material-ui/icons/Room";
 import PinDropIcon from "@material-ui/icons/PinDrop";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import { useNavigate } from "react-router-dom";
 
 const Ride = () => {
+  const nevigation = useNavigate();
+
+  const GotoRequesterList = () => {
+    nevigation("/myrides/requester");
+  };
   return (
     <Card className="ride">
       <CardContent className="ride_container">
@@ -48,7 +54,7 @@ const Ride = () => {
         <div className="ride_right">
           <IconButton className="bell_icon">
             <Badge title="Request" badgeContent={4} color="primary">
-              <NotificationsIcon />
+              <NotificationsIcon onClick={GotoRequesterList} />
             </Badge>
           </IconButton>
           <Button variant="contained" color="secondary">

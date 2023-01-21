@@ -18,6 +18,8 @@ import MyRidesDone from "./components/MyRides/MyRidesDone.js";
 import MyProfile from "./components/MyProfile/MyProfile.js";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./Redux/actions/userAction.js";
+import MyRidesRequester from "./components/MyRideRequester/MyRidesRequester.js";
+import MyRequestRides from "./components/MyRequestRides/MyRequestRides.js";
 
 const Routing = () => {
   const nevigate = useNavigate();
@@ -37,7 +39,9 @@ const Routing = () => {
         <Route path="/signup" element={<Register />} />
         <Route path="/search-ride" element={<Home />} />
         <Route path="/offer-ride" element={<OfferRide />} />
-        <Route path="/myrides" element={<MyRides />} />
+        {/* <Route path="/myrides" element={<MyRides />} /> */}
+        <Route path="/myrides" element={<MyRequestRides />} />
+        <Route path="/myrides/requester" element={<MyRidesRequester />} />
         <Route path="/profile" element={<MyProfile />} />
         <Route path="/myrides/ongoing-ride" element={<MyRidesOngoing />} />
         <Route path="/myrides/complete-ride" element={<MyRidesDone />} />

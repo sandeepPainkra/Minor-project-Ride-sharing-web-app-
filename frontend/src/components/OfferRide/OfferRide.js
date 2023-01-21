@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./OfferRide.css";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
+// import CircularProgress from "@material-ui/core/CircularProgress";
 import { useSelector } from "react-redux";
 
 const OfferRide = () => {
@@ -214,6 +215,7 @@ const OfferRide = () => {
               <div className="place_option">
                 <input
                   type="text"
+                  autoComplete="off"
                   name="origin"
                   value={origin}
                   onChange={(e) => setOrigin(e.target.value)}
@@ -298,7 +300,7 @@ const OfferRide = () => {
                 value={charges}
                 onChange={(e) => setCharges(e.target.value)}
                 name="charges"
-                placeholder="Charges Amount"
+                placeholder="Charges Amount/Per km"
               />
             </div>
             <p>Vehicle Details</p>

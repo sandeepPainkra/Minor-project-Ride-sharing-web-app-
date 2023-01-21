@@ -1,0 +1,36 @@
+.myRidesRequester {
+  width: 100%;
+  height: 93vh;
+  background: linear-gradient(227deg, #cc9393 0%, #8d8388 100%);
+  /* display: grid;
+  place-items: center; */
+}
+.myRideRequester_container {
+  width: 100%;
+  padding: 2rem 1rem 2rem;
+}
+.ride_requester {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ride_requester_details h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #222843;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+.ride_requester_buttons {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+.ride_requester_buttons button {
+  margin-right: 2rem;
+}
