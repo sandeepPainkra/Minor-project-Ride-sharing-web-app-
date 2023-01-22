@@ -15,18 +15,6 @@ const MyRequestRides = () => {
             <p>Timing: 10:00 am</p>
             <p>Contact Details: 6465475787</p>
           </div>
-          {/* <div className="ride_requester_buttons">
-            <Button
-              onClick={AcceptRideRequest}
-              variant="contained"
-              color="primary"
-            >
-              Accept
-            </Button>
-            <Button variant="contained" color="secondary">
-              Cancel
-            </Button>
-          </div> */}
         </div>
       </div>
     </div>

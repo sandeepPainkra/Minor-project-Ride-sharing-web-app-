@@ -1,19 +1,12 @@
-.myRequestRides {
+.MyRequestRidesResponse {
   width: 100%;
   min-height: 92vh;
   padding: 2rem 1rem;
   background: linear-gradient(227deg, #cc9393 0%, #8d8388 100%);
-  color: #222843 !important;
 }
-.myRequestRides h2 {
+.MyRequestRidesResponse h2 {
   font-size: 2rem;
   color: #222843;
   font-weight: 400;
   margin-bottom: 1rem;
-}
-.myRequestRides p {
-  font-size: 1.3rem;
-}
-.ride_requester {
-  margin-bottom: 2rem !important   ;
 }

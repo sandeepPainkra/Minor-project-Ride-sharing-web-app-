@@ -3,7 +3,7 @@ import "./Home.css";
 import mapImage from "../../assets/map.png";
 import Navbar from "../Navbar/Navbar.js";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import { Button } from "@material-ui/core";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
@@ -14,7 +14,7 @@ import MapDisplay from "../MapDisplay/MapDisplay.js";
 
 const Home = () => {
   const user = useSelector((state) => state.User);
-
+  const nevigate = useNavigate();
   const [isClick, setIsClick] = useState(false);
   const SearchRideClick = () => {
     setIsClick(true);
@@ -23,6 +23,10 @@ const Home = () => {
     setIsClick(false);
   };
 
+  const GetResponseRides = () => {
+    alert("You are successful posted your request for a ride!!");
+    nevigate("/search-ride/requested-rides-response");
+  };
   return (
     <div className="home">
       <div className="second_nav"></div>
@@ -70,7 +74,7 @@ const Home = () => {
                   <input type="date" />
                 </div>
               </div>
-              <Button>
+              <Button onClick={GetResponseRides}>
                 <SearchIcon style={{ color: "#fff", fontSize: "1.7rem" }} />
                 Search
               </Button>

@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./Redux/actions/userAction.js";
 import MyRidesRequester from "./components/MyRideRequester/MyRidesRequester.js";
 import MyRequestRides from "./components/MyRequestRides/MyRequestRides.js";
+import MyRequestRidesResponse from "./components/MyRequestRidesResponse/MyRequestRidesResponse.js";
 
 const Routing = () => {
   const nevigate = useNavigate();
@@ -38,6 +39,10 @@ const Routing = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/search-ride" element={<Home />} />
+        <Route
+          path="/search-ride/requested-rides-response"
+          element={<MyRequestRidesResponse />}
+        />
         <Route path="/offer-ride" element={<OfferRide />} />
         {/* <Route path="/myrides" element={<MyRides />} /> */}
         <Route path="/myrides" element={<MyRequestRides />} />
