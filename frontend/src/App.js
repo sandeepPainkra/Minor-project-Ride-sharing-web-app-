@@ -44,8 +44,8 @@ const Routing = () => {
           element={<MyRequestRidesResponse />}
         />
         <Route path="/offer-ride" element={<OfferRide />} />
-        {/* <Route path="/myrides" element={<MyRides />} /> */}
-        <Route path="/myrides" element={<MyRequestRides />} />
+        <Route path="/myrides" element={<MyRides />} />
+        <Route path="/myrides-request" element={<MyRequestRides />} />
         <Route path="/myrides/requester" element={<MyRidesRequester />} />
         <Route path="/profile" element={<MyProfile />} />
         <Route path="/myrides/ongoing-ride" element={<MyRidesOngoing />} />

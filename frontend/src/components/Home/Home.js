@@ -56,12 +56,13 @@ const Home = () => {
       }
     );
     const data = await reponse.json();
-    if (data.status === "ok" || data) {
+    if (data.status === "err" || !data) {
+      console.log("error");
+      alert("Fill all the fields!!🔴");
+    } else {
       alert("You are successful posted your request for a ride!!");
       nevigate("/search-ride/requested-rides-response");
       console.log(data);
-    } else {
-      alert("Something went wrong!!!");
     }
   };
   return (

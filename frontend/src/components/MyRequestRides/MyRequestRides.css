@@ -13,7 +13,13 @@
 }
 .myRequestRides p {
   font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0.6rem 0;
 }
 .ride_requester {
   margin-bottom: 2rem !important   ;
+}
+.ride_requester_details p span {
+  font-weight: 400;
+  font-size: 1.2rem !important;
 }

@@ -34,9 +34,16 @@ const Navbar = () => {
           </NavLink>
           {user ? (
             <>
-              <NavLink to="/myrides">My Ride</NavLink>
+              <NavLink
+                to={
+                  user.users.user_type == "rider"
+                    ? "myrides-request"
+                    : "/myrides"
+                }
+              >
+                My Ride
+              </NavLink>
               <NavLink to="/profile">My Profile</NavLink>
-              <NavLink to="/blog">Dashboard</NavLink>
             </>
           ) : (
             <></>

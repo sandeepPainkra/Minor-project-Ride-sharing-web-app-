@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MyRequestRidesResponse.css";
 import MotorcycleIcon from "@material-ui/icons/Motorcycle";
 import Button from "@material-ui/core/Button";
 import { Avatar } from "@material-ui/core";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
 
 const MyRequestRidesResponse = () => {
+  const [isClick, setIsClick] = useState(false);
+  const ChangeText = () => {
+    setIsClick(true);
+  };
   return (
     <div className="MyRequestRidesResponse">
       <h2>Results ( Based on your Post)</h2>
@@ -21,8 +26,10 @@ const MyRequestRidesResponse = () => {
             <p>Contact Details: 6465475787</p>
           </div>
           <div className="ride_requester_buttons">
-            <Button variant="contained" color="primary">
-              Request for Ride &nbsp; <MotorcycleIcon />
+            <Button onClick={ChangeText} variant="contained" color="primary">
+              {!isClick
+                ? "Request for Ride &nbsp; <MotorcycleIcon />"
+                : "Ride Requested &nbsp; <AccessTimeIcon/>"}
             </Button>
             <Button variant="contained" color="secondary">
               Cancel
