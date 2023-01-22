@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./Register.css";
 import RegisterCarImg from "../../assets/smart-car.png";
-import { Button, TextField } from "@material-ui/core";
+import {
+  Button,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+} from "@material-ui/core";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const nevigate = useNavigate();
+  const [register_as, setRegister_as] = React.useState("");
   const [images, setImage] = useState("");
   const [url, setUrl] = useState();
   const [input, setInput] = useState({
@@ -14,6 +22,10 @@ const Register = () => {
     phone: "",
     password: "",
   });
+
+  const handleChange = (event) => {
+    setRegister_as(event.target.value);
+  };
   const InputEvent = (e) => {
     const { name, value } = e.target;
     setInput((prev) => {
@@ -23,6 +35,8 @@ const Register = () => {
       };
     });
   };
+  // upload data into database
+
   useEffect(() => {
     if (url) {
       fetch("http://localhost:5000/api/user/signup", {
@@ -35,6 +49,7 @@ const Register = () => {
           email: input.email,
           phone: input.phone,
           image: url,
+          user_type: register_as,
           password: input.password,
         }),
       }).then(async (response) => {
@@ -56,10 +71,11 @@ const Register = () => {
       });
     }
   }, [url]);
+
+  // Upload an profile image into cloudinary
   const SubmitEvent = async (e) => {
     e.preventDefault();
 
-    // Upload an profile image into cloudinary
     const data = new FormData();
     data.append("file", images);
     data.append("upload_preset", "Ride-sharing(minor-project)");
@@ -84,7 +100,6 @@ const Register = () => {
         console.log(error);
       });
   };
-
   return (
     <div className="register">
       <div className="register_left">
@@ -145,6 +160,29 @@ const Register = () => {
               variant="filled"
               type="password"
             />
+
+            {/* radion buttons */}
+            <div className="register_radio">
+              <FormLabel component="legend">Registered as:</FormLabel>
+              <RadioGroup
+                aria-label="Register_as"
+                name="register_as"
+                value={register_as}
+                onChange={handleChange}
+              >
+                <FormControlLabel
+                  value="rider"
+                  control={<Radio />}
+                  label="Rider"
+                />
+                <FormControlLabel
+                  value="passenger"
+                  control={<Radio />}
+                  label="Passenger"
+                />
+              </RadioGroup>
+            </div>
+
             <div className="file_input">
               Select Profile Image
               <input

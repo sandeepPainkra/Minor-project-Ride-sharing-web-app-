@@ -15,7 +15,22 @@ import MapDisplay from "../MapDisplay/MapDisplay.js";
 const Home = () => {
   const user = useSelector((state) => state.User);
   const nevigate = useNavigate();
+  const [input, setInput] = useState({
+    pickup: "",
+    destination: "",
+    date: "",
+  });
   const [isClick, setIsClick] = useState(false);
+
+  const InputEvent = (e) => {
+    const { name, value } = e.target;
+    setInput((preValue) => {
+      return {
+        ...preValue,
+        [name]: value,
+      };
+    });
+  };
   const SearchRideClick = () => {
     setIsClick(true);
   };
@@ -23,9 +38,31 @@ const Home = () => {
     setIsClick(false);
   };
 
-  const GetResponseRides = () => {
-    alert("You are successful posted your request for a ride!!");
-    nevigate("/search-ride/requested-rides-response");
+  const GetResponseRides = async () => {
+    const reponse = await fetch(
+      "http://localhost:5000/ride/search-ride/request-ride",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+        },
+        body: JSON.stringify({
+          pickup: input.pickup,
+          destination: input.destination,
+          date: input.date,
+        }),
+      }
+    );
+    const data = await reponse.json();
+    if (data.status === "ok" || data) {
+      alert("You are successful posted your request for a ride!!");
+      nevigate("/search-ride/requested-rides-response");
+      console.log(data);
+    } else {
+      alert("Something went wrong!!!");
+    }
   };
   return (
     <div className="home">
@@ -40,16 +77,19 @@ const Home = () => {
             // className="btn_controller "
             className={!isClick ? "btn_controller show" : "btn_controller hide"}
           >
-            <Button onClick={SearchRideClick} className="btn search_btn">
-              <DriveEtaIcon />
-              Search Ride
-            </Button>
-            <Link to="/offer-ride">
-              <Button className="btn offer_btn">
-                <PeopleIcon />
-                Offer Ride
+            {user?.users.user_type ? (
+              <Button onClick={SearchRideClick} className="btn search_btn">
+                <DriveEtaIcon />
+                Search Ride
               </Button>
-            </Link>
+            ) : (
+              <Link to="/offer-ride">
+                <Button className="btn offer_btn">
+                  <PeopleIcon />
+                  Offer Ride
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/*  Form section starts here */}
@@ -62,16 +102,30 @@ const Home = () => {
                 <div className="form_controller">
                   <FiberManualRecordIcon fontSize="large" className="green" />
                   <input
+                    onChange={InputEvent}
                     type="text"
+                    name="pickup"
+                    value={input.pickup}
                     placeholder="ridewithme - Enter your pikup location.."
                   />
                 </div>
                 <div className="form_controller">
                   <FiberManualRecordIcon fontSize="large" />
-                  <input type="text" placeholder="Enter your Drop location.." />
+                  <input
+                    onChange={InputEvent}
+                    type="text"
+                    name="destination"
+                    value={input.destination}
+                    placeholder="Enter your Drop location.."
+                  />
                 </div>
                 <div className="form_controller">
-                  <input type="date" />
+                  <input
+                    onChange={InputEvent}
+                    name="date"
+                    value={input.date}
+                    type="date"
+                  />
                 </div>
               </div>
               <Button onClick={GetResponseRides}>

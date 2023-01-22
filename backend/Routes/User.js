@@ -13,7 +13,7 @@ userRouter.get("/user/res", LoginRequired, (req, res) => {
   res.send("this is restricted page using token !!");
 });
 userRouter.post("/user/signup", async (req, res) => {
-  const { name, email, password, phone, image } = req.body;
+  const { name, email, password, phone, image, user_type } = req.body;
   const isUserExist = await User.findOne({ email: email });
   try {
     if (isUserExist) {
@@ -28,6 +28,7 @@ userRouter.post("/user/signup", async (req, res) => {
             email,
             phone,
             image,
+            user_type,
             password: hashed,
           });
           user.save().then((user) => {
@@ -68,7 +69,7 @@ userRouter.post("/user/login", async (req, res) => {
                 savedUser.tokens.push({ token: token });
                 savedUser.save();
 
-                const { _id, name, email, phone, image } = savedUser;
+                const { _id, name, email, phone, image, user_type } = savedUser;
                 res.json({
                   status: "success",
                   message: "You are successfully loged in💚:)",
@@ -78,6 +79,7 @@ userRouter.post("/user/login", async (req, res) => {
                     phone,
                     email,
                     image,
+                    user_type,
                     token: savedUser.tokens[savedUser.tokens.length - 1].token,
                   },
                 });

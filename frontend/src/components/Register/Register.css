@@ -124,3 +124,9 @@
   border-radius: 1rem;
   color: gray;
 }
+
+.register_right form .register_radio {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}

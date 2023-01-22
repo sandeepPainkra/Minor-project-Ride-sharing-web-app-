@@ -27,6 +27,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  text-align: center !important;
 }
 .btn {
   width: 45% !important;
