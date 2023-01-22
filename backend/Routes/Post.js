@@ -71,10 +71,18 @@ PostRoute.post("/api/offer-ride", LoginRequired, async (req, res) => {
   }
 });
 PostRoute.get("/api/myallride", LoginRequired, (req, res) => {
-  Post.find()
+  Post.find({ postedBy: req.user._id })
     .populate("postedBy")
     .then((posts) => {
-      res.status(200).json({ posts });
+      res.json({ status: "ok", posts });
+    })
+    .catch((err) => console.log(err));
+});
+PostRoute.get("/api/allride", (req, res) => {
+  Post.find()
+    .populate("postedBy", "_id name phone image")
+    .then((posts) => {
+      res.json({ status: "ok", posts });
     })
     .catch((err) => console.log(err));
 });

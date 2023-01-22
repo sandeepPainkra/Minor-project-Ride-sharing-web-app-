@@ -34,7 +34,7 @@ const MyRides = () => {
                 variant="outlined"
                 color="default"
               >
-                All
+                All Rides
               </Button>
             </Link>
             <Link to="/myrides/ongoing-ride">
@@ -43,7 +43,7 @@ const MyRides = () => {
                 variant="outlined"
                 color="default"
               >
-                Ongoing
+                My Rides
               </Button>
             </Link>
             <Link to="/myrides/complete-ride">

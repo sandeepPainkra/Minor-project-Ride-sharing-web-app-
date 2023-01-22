@@ -49,7 +49,7 @@ const PostSchema = new mongoose.Schema({
   },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "UserData",
   },
 });
 const Post = mongoose.model("RideCollection", PostSchema);
