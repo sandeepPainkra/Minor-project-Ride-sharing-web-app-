@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Avatar, Button, IconButton, Menu, MenuItem } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../Redux/actions/userAction";
@@ -37,8 +37,8 @@ const Navbar = () => {
               <NavLink
                 to={
                   user.users.user_type == "rider"
-                    ? "myrides-request"
-                    : "/myrides"
+                    ? "/myrides"
+                    : "myrides-request"
                 }
               >
                 My Ride
@@ -79,7 +79,9 @@ const Navbar = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <Link to="/profile">
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+          </Link>
           <MenuItem onClick={(handleClose, RemoveUserClick)}>Logout</MenuItem>
         </Menu>
       </div>

@@ -66,3 +66,22 @@
 .profile_nevigateion {
   width: 100%;
 }
+.profile_nevigateion .box {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+.profile_nevigateion .box div {
+  width: 60px;
+  height: 60px;
+  border: 1px solid gray;
+  border-radius: 3rem;
+  margin: 1rem auto;
+  display: grid;
+  place-items: center;
+  font-size: 1.9rem;
+  font-weight: bolder;
+}
+.registered_as {
+  font-size: 0.8rem !important;
+}

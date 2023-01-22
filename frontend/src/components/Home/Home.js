@@ -78,7 +78,7 @@ const Home = () => {
             // className="btn_controller "
             className={!isClick ? "btn_controller show" : "btn_controller hide"}
           >
-            {user?.users.user_type ? (
+            {user?.users.user_type == "passenger" ? (
               <Button onClick={SearchRideClick} className="btn search_btn">
                 <DriveEtaIcon />
                 Search Ride

@@ -29,6 +29,9 @@ const MyProfile = () => {
         <div className="profile_info">
           <h2>{user?.users?.name}</h2>
           <p className="profile_title">Web Developer from India.</p>
+          <span className="registered_as">
+            Registered as: {user?.users?.user_type}
+          </span>
 
           <div className="profile_contact_details">
             <div className="profile_locat profile_inner">
@@ -48,9 +51,17 @@ const MyProfile = () => {
               <p>{user?.users?.email}</p>
             </div>
             <div className="profile_nevigateion">
-              <Button variant="contained" size="large" color="primary">
-                Chat &nbsp; <SendIcon />
-              </Button>
+              {user?.users?.user_type == "pessanger" ? (
+                <div className="box">
+                  <h3>Total Rides offered</h3>
+                  <div>8</div>
+                </div>
+              ) : (
+                <div className="box">
+                  <h3>My Total Rides</h3>
+                  <div>8</div>
+                </div>
+              )}
             </div>
           </div>
         </div>
