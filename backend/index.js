@@ -16,9 +16,9 @@ mongoose
   })
   .catch((err) => console.log(err));
 app.use("/api/", userRouter);
-
-app.use("/ride/search-ride", RiderPostRouter);
 app.use("/ride", PostRoute);
+app.use("/ride/search-ride", RiderPostRouter);
+
 app.listen(PORT, () => {
   console.log(`server is listening in http://localhost:${PORT}`);
 });

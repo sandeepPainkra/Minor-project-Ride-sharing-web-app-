@@ -49,7 +49,9 @@ const LandingPage = () => {
           <h2>Driving in your car soon?</h2>
           <p>Let's make this your least expensive journey ever.</p>
 
-          <Button>Offer Ride</Button>
+          <Link to="/search-ride">
+            <Button>Offer Ride</Button>
+          </Link>
         </div>
       </div>
       {/* Carpooling benefits */}

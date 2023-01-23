@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import "./MyRides.css";
 import Ride from "../Ride/Ride.js";
@@ -8,6 +8,20 @@ import { Link } from "react-router-dom";
 
 const MyRides = () => {
   const [isClick, setIsClick] = useState(false);
+  const [allRides, setAllRides] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/rides/api/allrides", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setAllRides(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const AllRideBtnClick = () => {
     console.log("allride btn clicked");
@@ -21,7 +35,7 @@ const MyRides = () => {
   };
 
   console.log(isClick);
-
+  console.log(allRides);
   return (
     <>
       <div className="myRides">
@@ -57,9 +71,12 @@ const MyRides = () => {
             </Link>
           </div>
           <div className="rides_container">
+            {allRides.map((ride) => {
+              return <Ride ride={ride} />;
+            })}
             <Ride />
-            <Ride />
-            <Ride />
+            {/* <Ride />
+            <Ride /> */}
           </div>
         </div>
       </div>

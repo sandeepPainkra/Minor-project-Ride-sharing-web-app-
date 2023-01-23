@@ -78,7 +78,7 @@ PostRoute.get("/api/myallride", LoginRequired, (req, res) => {
     })
     .catch((err) => console.log(err));
 });
-PostRoute.get("/api/allride", (req, res) => {
+PostRoute.get("/api/allrides", (req, res) => {
   Post.find()
     .populate("postedBy", "_id name phone image")
     .then((posts) => {
